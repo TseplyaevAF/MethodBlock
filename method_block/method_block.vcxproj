@@ -151,7 +151,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="formulas4blockMethod.cpp" />
     <ClCompile Include="method_block.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="formulas4blockMethod.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

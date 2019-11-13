@@ -1,26 +1,7 @@
 ﻿#include <iostream>
-#include <vector>
+#include "formulas4blockMethod.h"
 
 using namespace std;
-
-using vector_float = vector<vector<float>>;
-
-//нахождение обратной матрицы 2x2
-vector_float reverse(vector<vector<float>> A) {
-
-	float buf = A[0][0];
-	//определитель
-	float det = A[0][0] * A[1][1] - A[1][0] * A[0][1];
-
-	A[0][0] = A[1][1]; A[0][1] = -A[0][1];
-	A[1][0] = -A[1][0]; A[1][1] = buf;
-	for (unsigned i = 0; i < 2; i++) {
-		for (unsigned j = 0; j < 2; j++) {
-			A[i][j] *= (1 / det);
-	}
-	}
-	return A;
-}
 
 int main()
 {
@@ -44,10 +25,12 @@ int main()
 	vector_float Q1; // Обратная матрица к Q
 	vector_float M1; // Обратная матрица к M
 
-	Q1 = reverse(Q);
-	M1 = reverse(M);
+	Q1 = reverse(Q); // шаг первый
+	M1 = reverse(M); // шаг второй
 
-
+	// шаг третий
+	// получение матрицы X по формуле X = (M - NQ^-1*P)^-1
+	vector_float X = formula_XV(M, N, Q1, P);
 
 	return 0;
 }
