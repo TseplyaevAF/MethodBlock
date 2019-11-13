@@ -32,5 +32,22 @@ int main()
 	// получение матрицы X по формуле X = (M - NQ^-1*P)^-1
 	vector_float X = formula_XV(M, N, Q1, P);
 
+	// шаг четвертый
+	// получение матрицы V по формуле V = (Q - PM^-1*N)^-1
+	vector_float V = formula_XV(Q, P, M1, N);
+
+	// шаг пятый
+	// получение матрицы U по формуле U = -VPM^-1
+	vector_float U = formula_UY(V, P, M1);
+
+	// шаг шестой
+	// получение матрицы U по формуле U = -VPM^-1
+	vector_float Y = formula_UY(X, N, Q1);
+
+	printVector(X);
+	printVector(Y);
+	printVector(U);
+	printVector(V);
+
 	return 0;
 }
